@@ -1,0 +1,198 @@
+
+  .menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;          /* always on top */
+    color:  rgba(252, 250, 249, 0.805);
+    font-size: 70px;
+    cursor: pointer;
+  }
+
+  
+  /* ---------- dropdown menu ---------- */
+  .hide-header {           /* collapsed */
+    display: none;
+  }
+  
+  .show-header {           /* expanded */
+    position: fixed;
+    top: 90px;             /* sits just under the icon */
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(210, 122, 7, 0.792); 
+    border-radius: 8px;
+    z-index: 950;          /* under the icon, above overlay */
+  }
+  
+
+  @media (max-width:1024px){ 
+    .menu-icon{ font-size:56px;
+     }
+     .show-header,
+     .hide-header{          /* same selector pair */
+       width: 200px;        /* instead of 240px */
+       top: 80px;           /* a bit tighter under the icon */
+       right: 16px;
+       padding: 1rem 1.4rem;
+     }
+     .show-header a{ font-size: 1rem; }
+    
+    }
+@media (max-width:480px) { 
+  .menu-icon{ font-size:42px; 
+  }
+  .show-header,
+  .hide-header{
+    width: 160px;
+    top: 74px;
+    right: 14px;
+    padding: .9rem 1.1rem;
+    gap: .8rem;
+  }
+
+  
+  .show-header a{ font-size: .95rem; }
+ }
+
+ @media (max-width:375px) { 
+  .menu-icon{ font-size:38px; 
+  }
+  .show-header,
+  .hide-header{
+    width: 120px;
+    top: 64px;
+    right: 12px;
+    padding: .9rem 1.1rem;
+    gap: .8rem;
+  }
+
+  
+  .show-header a{ font-size: .75rem; }
+ }
+
+  .show-header li {
+    list-style: none;
+  }
+  
+  .show-header a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .show-header a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ---------- overlay that closes menu on outside click ---------- */
+  .menu-overlay {
+    position: fixed;
+    inset: 0;              /* full-screen */
+    background: transparent;
+    z-index: 900;          /* between page and menu panel */
+  }
+
+  .show-header a {
+    position: relative;     /* for the arrow */
+    padding: 0.35rem 0.6rem 0.35rem 1.4rem;  /* extra left room for arrow */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  /* small hover lift (optional) */
+  .show-header a:hover {
+    color: #ffffff;
+  }
+  
+  /* -------- active arrow indicator -------- */
+  .show-header a.active::before {
+    content: '➜';           /* arrow glyph */
+    position: absolute;
+    left: 0;                /* sits in the padding space */
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 0 0 10px #fff;
+    font-size: 1rem;
+    color: #ffffff;         /* warm coffee-light tint */
+    filter: drop-shadow(0 0 3px rgba(255,210,138,0.75));
+  }
+/* ---------- glowing status (no background box) ---------- */
+.work-status{
+    position:fixed;
+    top:22px;
+    left:60px;
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    font-size:.9rem;
+    font-weight:600;
+    text-decoration:none;
+    user-select:none;
+    z-index:1200;
+  
+    /* NEW – subtle dark outline so text pops on any bg */
+    -webkit-text-stroke: 0.1px #000;
+}
+  
+  /* tiny glowing circle */
+  .work-status .dot{
+    width:.65rem;
+    height:.65rem;
+    border-radius:50%;
+    background:currentColor;
+    box-shadow:0 0 6px currentColor;
+  }
+  
+  /* green variant */
+  .work-status.open{
+    color:#34d058;
+  }
+  
+  /* red variant */
+  .work-status.closed{
+    color:#ff5252;
+  }
+
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 4px 0   currentColor; }
+    70%  { box-shadow: 0 0 12px 6px currentColor; }
+    100% { box-shadow: 0 0 4px 0   currentColor; }
+  }
+  
+  .work-status .dot {
+    animation: pulse 1.6s ease-out infinite;
+  }
+
+  /* ---------- Footer ---------- */
+.site-footer{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.5rem;
+  padding:1rem 0;              /* slimmer than before */
+  background:#2b1a10;
+}
+
+.credits{
+  margin:0;
+  color:#ffdbaa;
+  font-size:1rem;
+  text-transform:lowercase;
+}
+.heart{filter:drop-shadow(0 0 2px #ff6d6d)}
+
+.social-links{
+  display:flex;
+  gap:1.6rem;                  /* a bit of breathing room */
+}
+.social-links a{
+  color:#ffdbaa;
+  font-size:1.6rem;
+  transition:transform .15s;
+}
+.social-links a:hover{transform:translateY(-3px)}

@@ -1,0 +1,265 @@
+/* ---------- HERO WITH BRICK BACKDROP ---------- */
+.projects-hero{
+    position:relative;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:url('../../public/assets/brick wall.png') center/cover no-repeat;
+  }
+
+  .board-bg{                                   /* applied via class */
+    background:url('../../public/assets/project_board.png') center/cover repeat;
+    
+  }
+  /* ---------- BLOB ---------- */
+  .blob{
+    position:relative;
+    width:120vmin;
+    height:120vmin;
+    animation:blobMorph 14s ease-in-out infinite alternate;
+    clip-path:polygon(
+        58% 0%,80% 8%,94% 26%,92% 52%,78% 76%,
+        52% 96%,24% 94%,6% 70%,2% 44%,12% 20%,32% 6%);
+    z-index:1;
+    filter:drop-shadow(0 14px 28px rgba(0,0,0,.55)) blur(1px);
+  }
+  
+  /* morph keyframes */
+  @keyframes blobMorph{
+    0%{clip-path:polygon(58% 0%,80% 8%,94% 26%,92% 52%,78% 76%,52% 96%,24% 94%,6% 70%,2% 44%,12% 20%,32% 6%)}
+    33%{clip-path:polygon(60% 2%,82% 16%,96% 38%,88% 64%,72% 84%,48% 98%,22% 90%,4% 68%,2% 40%,14% 18%,36% 4%)}
+    66%{clip-path:polygon(56% 0%,77% 6%,92% 22%,94% 46%,84% 74%,58% 96%,30% 98%,8% 78%,0% 48%,8% 24%,28% 8%)}
+    100%{clip-path:polygon(54% 4%,74% 12%,90% 32%,90% 58%,76% 80%,50% 98%,20% 94%,6% 74%,4% 46%,14% 24%,34% 6%)}
+  }
+  
+  /* GIF fills and is clipped */
+  .hero-gif{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    image-rendering:pixelated;
+    clip-path:inherit;
+  }
+  
+  /* caption + buttons */
+  .blob-inner{
+    position:absolute;
+    top:46%; left:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2.3rem;
+    text-align:center;
+    z-index:2;
+  }
+  .hero-tag{
+    font-size:clamp(1.7rem,4vw,2.4rem);
+    color:#fff;
+    text-shadow:0 2px 6px rgba(0,0,0,.65);
+    background:rgba(0,0,0,.25);
+    padding:.2rem .8rem;
+    border-radius:8px;
+  }
+  .hero-buttons{display:flex;gap:2.5rem;margin-top:1.5rem}
+  
+  /* button style reused from About */
+  .primary-button{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:.6rem 1.9rem;font:700 1.05rem/1.2 inherit;
+    border-radius:999px;background:#fff;color:#000;text-decoration:none;
+    transition:transform .15s;
+  }
+  .primary-button:hover{transform:translateY(-2px)}
+  .primary-button.secondary{background:transparent;color:#fff;border:2px solid #fff}
+  .primary-button.secondary:hover{transform:translateY(-2px)}
+  
+  /* ---------- IMAGE-GRID ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:2.2rem;
+    padding:3.5rem 1.2rem;
+  }
+  
+  .project-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+    animation:project-wobble 10s linear infinite;
+  }
+  .project-card:hover{
+    animation-play-state:paused;
+    transform: rotate(0deg);
+}
+  
+  /* picture */
+  .project-card img{
+    width:100%;height:260px;object-fit:cover;display:block;
+  }
+  
+  /* overlay info */
+  .project-info{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    gap:1rem;padding:1.4rem;text-align:center;
+    background:rgba(0,0,0,.78);color:blanchedalmond;
+    opacity:0;transition:opacity .35s;
+  }
+  .project-card:hover .project-info{opacity:1}
+  .project-info h3{margin:.2rem 0 .4rem;font-size:1.2rem}
+  .project-info p{font-size:.95rem;line-height:1.25}
+  .project-info .primary-button{padding:.45rem 1.6rem;font-size:.9rem}
+  
+  /* wobble anim */
+  @keyframes project-wobble{
+    0%{transform:rotate(-4deg)}
+    25%{transform:rotate(0)}
+    50%{transform:rotate(3deg)}
+    75%{transform:rotate(0)}
+    100%{transform:rotate(-4deg)}
+  }
+  @media (min-width:1200px){
+    .projects-grid{
+      /* four perfectly even columns */
+      grid-template-columns:repeat(4, 320px);  /* 4 × 240 px cards */
+  
+      /* center the whole board */
+      justify-content:center;
+  
+      /* keep the same gap you already use */
+      gap:1.6rem;
+    }
+  }
+  /* phones */
+  @media(max-width:480px){
+    .hero-buttons{flex-direction:column;align-items:center;gap:1rem}
+    .primary-button{width:78vw}
+    .blob{
+      width:120vmin;
+      height:160vmin;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));}
+      .hero-tag{font-size:clamp(1.3rem,4vw,1.8rem);}
+  }
+  
+  /* ---------- overlay panels ---------- */
+  .proj-up{
+    position:fixed;inset:0;background:#5b2011;
+    animation:panelUp 450ms ease-in forwards;z-index:1600;
+  }
+  
+  .proj-down{
+    position:fixed;inset:0;background:#da7836;
+    animation:projSlideDown 450ms ease-in forwards;z-index:1600;
+  }
+  @keyframes panelUp     {from{transform:translateY(100%)} to{transform:translateY(0)}}
+  @keyframes projSlideDown{from{transform:translateY(-100%)} to{transform:translateY(0)}}
+
+  /* ============ STICKY-NOTE WRAPPER ============ */
+.note-card{
+    position:relative;
+    padding:12px;
+    background:rgb(246, 213, 167);
+    border-radius:12px;
+    box-shadow:0 6px 10px rgba(0,0,0,.35);
+    transition:transform .2s;
+  }
+  .note-card:hover{transform:translateY(-4px)}
+  
+  /* push-pin */
+  .note-card::before{
+    content:'';
+    position:absolute;
+    top:-10px;left:50%;
+    transform:translateX(-50%);
+    width:18px;height:18px;
+    background:#c62828;                 /* red pin */
+    border-radius:50%;
+    box-shadow:0 0 2px rgba(0,0,0,.6);
+    z-index:3;
+  }
+  
+  /* ensure the wobbling project-card fits inside note */
+  .note-card .project-card{
+    border-radius:8px;     /* softer corner inside note */
+    box-shadow:none;       /* outer note already has shadow */
+  }
+  
+  .project-gif{
+    position:fixed;          /* stays on background, never pushes text */
+    bottom:0vh;
+    left:0vw;
+    height:clamp(150px,16vh,200px);
+    width:auto;
+    image-rendering:pixelated;
+    pointer-events:none;
+    z-index:2;
+  }
+
+  .list-down{
+    position:fixed; inset:0;
+    background:#5b2011;                /* requested colour */
+    animation:projSlideDown 450ms ease-in forwards;
+    z-index:1600;
+  }
+/* ---------- ACTION BUTTONS IN OVERLAY ---------- */
+.action-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.9rem;font-weight:700;text-decoration:none;white-space:nowrap;
+  transition:transform .15s;
+  gap:.25rem;             /* keeps icon centred in pill */
+}
+
+/* Demo pill (unchanged) */
+.demo-btn{
+  padding:.45rem 1.55rem;border-radius:999px;
+  background:#fff;color:#000;
+}
+.demo-btn:hover{
+  transform:translateY(-2px);
+  color: #b75e23;}
+
+/* 👉  GitHub pill — transparent w/ white border  */
+.github-btn{
+  padding:.45rem .9rem;            /* same height as Demo */
+  border:none;
+  border-radius:999px;
+  color:#000000;
+  background:#fff;
+  font-size:1.3rem;                 /* white logo, no disc */
+}
+.github-btn:hover{
+  transform:translateY(1.1px);
+  color: #b75e23;}
+
+
+
+/* closed-source lock (unchanged, but give it border too) */
+.icon-btn.disabled{
+  padding:.45rem .9rem;
+  border:2px solid rgba(255,255,255,.4);
+  border-radius:999px;
+  background:transparent;
+  color:#eee;
+  cursor:default;pointer-events:none;
+}
+
+/* ---------- more space between buttons ---------- */
+.overlay-buttons{
+  display:flex;
+  gap:1.6rem;        /* was 1.1rem */
+  flex-wrap:wrap;
+  justify-content:center;
+  
+}
+
+/* ---------- upright pause on hover (unchanged) ---------- */
+.project-card:hover{
+  animation:none;
+  transform:rotate(0deg);
+}

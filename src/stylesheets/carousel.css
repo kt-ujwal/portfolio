@@ -1,0 +1,52 @@
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 0;
+    background: rgb(226, 194, 146);    /* faint overlay so pixels pop */
+  }
+  
+  .carousel-title {
+    margin: 0 0 2rem;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #030000;
+  }
+  
+  /* --- scrolling strip --- */
+  .logo-strip {
+    display: flex;
+    gap: 3rem;               /* space between logos */
+    width: max-content;      /* shrink to content width so animation is smooth */
+    animation: scroll 28s linear infinite;
+  }
+  
+  .tech-logo {
+    height: clamp(48px, 7vw, 96px);
+    width: auto;
+    image-rendering: pixelated;   /* keeps logos crisp */
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.55));
+ 
+  }
+
+  .tech-logo:hover {
+    animation: bounce 450ms ease-out forwards;
+  }
+  
+  /* pause on hover (optional) */
+  .logo-strip:hover {
+    animation-play-state: paused;
+  }
+  
+  /* keyframes – translate entire strip left until first copy is out of view */
+  @keyframes scroll {
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes bounce {
+    0%   { transform: translateY(0); }
+    35%  { transform: translateY(-18%); }
+    60%  { transform: translateY(0); }
+    80%  { transform: translateY(-9%); }
+    100% { transform: translateY(0); }
+  }
+  

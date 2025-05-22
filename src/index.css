@@ -1,0 +1,57 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=VT323&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif;
+  background:#2b1a10;
+  
+}
+
+.vt323-regular {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.flex-with-center{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.font-bold{
+  font-weight: bold;
+}
+
+.n-box-projects{
+  border-radius: 50px;
+background: linear-gradient(145deg, #d0803d, #f79849);
+box-shadow:  5px 5px 14px #c77a3a,
+             -5px -5px 14px #ffa24e;
+}
+html{ overflow-anchor:none; }
+html, body{
+  scrollbar-width: none;            /* Firefox */
+  -ms-overflow-style: none;         /* IE / old Edge */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+  display: none;                    /* Chrome / Safari / Edge */
+}
